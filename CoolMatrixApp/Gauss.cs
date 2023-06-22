@@ -95,8 +95,7 @@ namespace CoolMatrixApp
                 }
                 else
                 {
-                    Console.WriteLine("Имеет бесконечное множество решений");
-                    return null;
+                    throw new Exception("Имеет бесконечное множество решений");
                 }
             }
             return result;

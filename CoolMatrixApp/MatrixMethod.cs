@@ -45,8 +45,7 @@ namespace CoolMatrixApp
             }
             else
             {
-                Console.WriteLine("Невозможно решить");
-                return null;
+                throw new Exception("Невозможно решить");
             }
         }
 

@@ -54,7 +54,7 @@ namespace CoolMatrixApp
             }
             else
             {
-                return null;
+                throw new Exception("Невозможно решить");
             }
         }
 
