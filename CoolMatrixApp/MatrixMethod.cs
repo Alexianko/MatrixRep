@@ -8,11 +8,17 @@ namespace CoolMatrixApp
 {
     class MatrixMethod
     {
-        Matrix data;
-        Matrix issues;
-
+        Matrix mat;
         public MatrixMethod(Matrix mat)
         {
+            this.mat = mat;
+        }
+
+        public Matrix FindIssue()
+        {
+            Matrix data;
+            Matrix issues;
+
             int line = mat.LineCount;
             int row = mat.RowCount;
             data = new double[line, row - 1];
@@ -31,10 +37,6 @@ namespace CoolMatrixApp
                     }
                 }
             }
-        }
-
-        public Matrix FindIssue()
-        {
             if (data.GetDeterminator() != 0)
             {
                 Matrix inv = data.Inverse();
