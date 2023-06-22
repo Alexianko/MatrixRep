@@ -20,8 +20,8 @@ namespace CoolMatrixApp
 
         public Kramer(Matrix mat)
         {
-            int line = mat.GetLength(0);
-            int row = mat.GetLength(1);
+            int line = mat.LineCount;
+            int row = mat.RowCount;
             data = new double[line,row-1];
             issues = new double[line,1];
             for(int i = 0; i < line; i++)
@@ -42,11 +42,11 @@ namespace CoolMatrixApp
         
         public Matrix FindIssue()
         {
-            Matrix result = new double[data.GetLength(0), 1];
+            Matrix result = new double[data.LineCount, 1];
             if (data.GetDeterminator() != 0)
             {
                 int lineCount = result.LineCount;
-                for(int i = 0; i < result.GetLength(0); i++)
+                for(int i = 0; i < result.LineCount; i++)
                 {
                     result[i,0] = GetSubMatrix(i).GetDeterminator() / data.GetDeterminator();
                 }

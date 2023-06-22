@@ -70,7 +70,7 @@ namespace CoolMatrixApp
 
         static public Matrix Inverse(this Matrix mat)
         {
-            int length = mat.GetLength(0);
+            int length = mat.LineCount;
             double[,] _mat = new double[length, length];
             for (int i = 0; i < length; i++)
             {
