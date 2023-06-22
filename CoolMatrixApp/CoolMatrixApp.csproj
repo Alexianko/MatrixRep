@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Gauss.cs" />
     <Compile Include="Graph.cs" />
-    <Compile Include="GraphExtension.cs" />
     <Compile Include="Kramer.cs" />
     <Compile Include="LU.cs" />
     <Compile Include="Matrix.cs" />

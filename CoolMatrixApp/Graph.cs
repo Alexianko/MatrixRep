@@ -14,8 +14,8 @@ namespace CoolMatrixApp
 
         public void SearchWidth(int dot)
         {
-            int length = adjacency.LineCount;
-            bool[] used = new bool[length];
+            //int length = adjacency.LineCount;
+            bool[] used = new bool[adjacency.LineCount];
             Queue<int> q = new Queue<int>();
             q.Enqueue(dot);
             int current;
@@ -24,7 +24,7 @@ namespace CoolMatrixApp
                 current = q.Dequeue();
                 Console.WriteLine($"Пройдена точка {current}");
                 used[current] = true;
-                for(int i=0; i<length; i++)
+                for(int i=0; i< adjacency.LineCount; i++)
                 {
                     if (adjacency[dot, i] != 0)
                     {
@@ -38,8 +38,7 @@ namespace CoolMatrixApp
 
         public void SearchDepth(int dot)
         {
-            int length = adjacency.LineCount;
-            bool[] used = new bool[length];
+            bool[] used = new bool[adjacency.LineCount];
 
             IterateDepth(dot, used);
             //осталось вернуть что-то адекватное
@@ -48,8 +47,7 @@ namespace CoolMatrixApp
         public void IterateDepth(int dot, bool[] used)
         {
             Console.WriteLine($"Пройдена точка {dot}");
-            int length = adjacency.LineCount;
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < adjacency.LineCount; i++)
             {
                 if (adjacency[dot, i] != 0)
                 {
@@ -61,12 +59,12 @@ namespace CoolMatrixApp
 
         public double[] Dijkstra(int dot)
         {
-            int length = adjacency.LineCount;
+            //int length = adjacency.LineCount;
             Queue<int> q = new Queue<int>();
-            bool[] used = new bool[length];
-            double[] costs = new double[length];
+            bool[] used = new bool[adjacency.LineCount];
+            double[] costs = new double[adjacency.LineCount];
 
-            for (int i=0; i<length;i++)
+            for (int i=0; i< adjacency.LineCount; i++)
             {
                 costs[i] = Double.PositiveInfinity;
             }
@@ -78,7 +76,7 @@ namespace CoolMatrixApp
                  int current = q.Dequeue();
                 Console.WriteLine($"Пройдена точка {current}");
                 used[current] = true;
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < adjacency.LineCount; i++)
                 {
                     
                     if (!used[i] && !Double.IsPositiveInfinity(adjacency[current, i]) && costs[i] > costs[current] + adjacency[current, i])
@@ -94,11 +92,11 @@ namespace CoolMatrixApp
 
         public Matrix Floyd()
         {
-            int length = adjacency.LineCount;
+            //int length = adjacency.LineCount;
 
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < adjacency.LineCount; i++)
             {
-                for (int j = 0; j < length; j++)
+                for (int j = 0; j < adjacency.LineCount; j++)
                 {
                     if (adjacency[i, j] == 0 && i!=j)
                     {
@@ -107,11 +105,11 @@ namespace CoolMatrixApp
                 }
             }
             
-            for (int i=0; i < length; i++)
+            for (int i=0; i < adjacency.LineCount; i++)
             {
-                for (int j=0; j < length; j++)
+                for (int j=0; j < adjacency.LineCount; j++)
                 {
-                    for (int k = 0; k < length; k++) 
+                    for (int k = 0; k < adjacency.LineCount; k++) 
                     {
                         if (adjacency[j, k] > (adjacency[j, i] + adjacency[i, k]))
                         {
@@ -127,9 +125,9 @@ namespace CoolMatrixApp
 
         public Matrix Prima()
         {
-            int length = adjacency.LineCount;
-            bool[] used = new bool[length];
-            Matrix result = new double[length, length];
+            //int length = adjacency.LineCount;
+            bool[] used = new bool[adjacency.LineCount];
+            Matrix result = new double[adjacency.LineCount, adjacency.LineCount];
             used[0] = true;
             int temp_dot = 1;
             while (temp_dot > 0)
@@ -137,11 +135,11 @@ namespace CoolMatrixApp
                 double temp = Double.PositiveInfinity;
                 int temp_start = -1;
                 temp_dot = -1;
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < adjacency.LineCount; i++)
                 {
                     if (used[i])
                     {
-                        for (int j = 0; j < length; j++)
+                        for (int j = 0; j < adjacency.LineCount; j++)
                         {
                             if (!used[j] && adjacency[i, j] != 0 && temp > adjacency[i, j])
                             {
