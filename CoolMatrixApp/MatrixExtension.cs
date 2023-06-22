@@ -71,15 +71,15 @@ namespace CoolMatrixApp
         static public Matrix Inverse(this Matrix mat)
         {
             int length = mat.LineCount;
-            double[,] _mat = new double[length, length];
+            double[,] result = new double[length, length];
             for (int i = 0; i < length; i++)
             {
                 for (int j = 0; j < length; j++)
                 {
-                    _mat[i, j] = GetMatrixMinor(mat, j, i);
+                    result[i, j] = GetMatrixMinor(mat, j, i);
                 }
             }
-            return _mat;
+            return result;
         }
 
          
